@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import { Alert, Col, Container, Form, Row, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
@@ -12,6 +13,10 @@ function EditProductPage() {
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState("");
     const [images, setImages] = useState([]);
+    const [marque, setMarque] = useState("");
+    const [fabricant, setFabricant] = useState("");
+    const [fonct, setFonct] = useState("");
+    const [rubrique, setRubrique] = useState("");
     const [imgToRemove, setImgToRemove] = useState(null);
     const navigate = useNavigate();
     const [updateProduct, { isError, error, isLoading, isSuccess }] = useUpdateProductMutation();
@@ -26,6 +31,11 @@ function EditProductPage() {
                 setCategory(product.category);
                 setImages(product.pictures);
                 setPrice(product.price);
+                setMarque(product.marque);
+                setFabricant(product.fabricant);
+                setRubrique(product.rubrique);
+                setFonct(product.fonct);
+
             })
             .catch((e) => console.log(e));
     }, [id]);
@@ -43,10 +53,10 @@ function EditProductPage() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (!name || !description || !price || !category || !images.length) {
+        if (!name || !description || !price || !category || !images.length ||!marque || !fabricant ||!fonct ||!rubrique) {
             return alert("Please fill out all the fields");
         }
-        updateProduct({ id, name, description, price, category, images }).then(({ data }) => {
+        updateProduct({ id, name, description, price, category, images,marque,fabricant,fonct,rubrique }).then(({ data }) => {
             if (data.length > 0) {
                 setTimeout(() => {
                     navigate("/");
@@ -58,8 +68,8 @@ function EditProductPage() {
     function showWidget() {
         const widget = window.cloudinary.createUploadWidget(
             {
-                cloudName: "your-cloudname",
-                uploadPreset: "your-preset",
+                cloudName: "dggw5ktf8",
+                uploadPreset: "ml_default",
             },
             (error, result) => {
                 if (!error && result.event === "success") {
@@ -105,7 +115,66 @@ function EditProductPage() {
                                 <option value="laptops">laptops</option>
                             </Form.Select>
                         </Form.Group>
+                        <Form.Group className="mb-3" onChange={(e) => setRubrique(e.target.value)}>
+                            <Form.Label>Rubrique</Form.Label>
+                            <Form.Select>
+                                <option disabled selected>
+                                    -- Select One --
+                                </option>
+                                <option value="pc gamers">pc gamers</option>
+                                <option value="pc pro">pc pro</option>
+                                <option value="pc en promotion">pc en promotion</option>
+                                <option value="laptop gamers">laptop gamers</option>
+                                <option value="laptop pro">laptop pro</option>
+                                <option value="laptop en promotion">laptop en promotion</option>
 
+
+                            </Form.Select>
+                        </Form.Group>
+                        <Form.Group className="mb-3" onChange={(e) => setMarque(e.target.value)}>
+                            <Form.Label>Marque</Form.Label>
+                            <Form.Select>
+                                <option disabled selected>
+                                    -- Select One --
+                                </option>
+                                <option value="Mac">Mac</option>
+                                <option value="Acer">Acer</option>
+                                <option value="Asus">Asus</option>
+                                <option value="Dell">Dell</option>
+                                <option value="HP">HP</option>
+                                <option value="Huawei">Huawei</option>
+                                <option value="Lenovo">Lenovo</option>
+                                <option value="MSI">MSI</option>
+                                <option value="Razen">Razen</option>
+
+
+
+                            </Form.Select>
+                        </Form.Group>
+                        <Form.Group className="mb-3" onChange={(e) => setFabricant(e.target.value)}>
+                            <Form.Label>Fabricant</Form.Label>
+                            <Form.Select>
+                                <option disabled selected>
+                                    -- Select One --
+                                </option>
+                                <option value="Apple">Apple</option>
+                                <option value="Acer">Acer</option>
+                                <option value="Asus">Asus</option>
+                                <option value="Dell">Dell</option>
+                                <option value="HP">HP</option>
+                                <option value="Huawei">Huawei</option>
+                                <option value="Lenovo">Lenovo</option>
+                                <option value="MSI">MSI</option>
+                                <option value="Razen">Razen</option>
+
+
+
+                            </Form.Select>
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Fonctionalités</Form.Label>
+                            <Form.Control as="textarea" type="text" placeholder="Fonctionalités..." value={fonct} required onChange={(e) => setFonct(e.target.value)} />
+                        </Form.Group>
                         <Form.Group className="mb-3">
                             <Button type="button" onClick={showWidget}>
                                 Upload Images
@@ -114,7 +183,7 @@ function EditProductPage() {
                                 {images.map((image) => (
                                     <div className="image-preview">
                                         <img src={image.url} />
-                                        {imgToRemove != image.public_id && <i className="fa fa-times-circle" onClick={() => handleRemoveImg(image)}></i>}
+                                        {imgToRemove !== image.public_id && <i className="fa fa-times-circle" onClick={() => handleRemoveImg(image)}></i>}
                                     </div>
                                 ))}
                             </div>
