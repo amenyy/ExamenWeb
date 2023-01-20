@@ -109,15 +109,14 @@ function EditProductPage() {
                                 <option disabled selected>
                                     -- Select One --
                                 </option>
-                                <option value="technology">technology</option>
-                                <option value="tablets">tablets</option>
-                                <option value="phones">phones</option>
-                                <option value="laptops">laptops</option>
+                                
+                                <option value="pc de bureau">Pc de bureau</option>
+                                <option value="laptop">Laptop</option>
                             </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3" onChange={(e) => setRubrique(e.target.value)}>
                             <Form.Label>Rubrique</Form.Label>
-                            <Form.Select>
+                            <Form.Select value={rubrique}>
                                 <option disabled selected>
                                     -- Select One --
                                 </option>
@@ -133,7 +132,7 @@ function EditProductPage() {
                         </Form.Group>
                         <Form.Group className="mb-3" onChange={(e) => setMarque(e.target.value)}>
                             <Form.Label>Marque</Form.Label>
-                            <Form.Select>
+                            <Form.Select value={marque}>
                                 <option disabled selected>
                                     -- Select One --
                                 </option>
@@ -153,7 +152,7 @@ function EditProductPage() {
                         </Form.Group>
                         <Form.Group className="mb-3" onChange={(e) => setFabricant(e.target.value)}>
                             <Form.Label>Fabricant</Form.Label>
-                            <Form.Select>
+                            <Form.Select value={fabricant}>
                                 <option disabled selected>
                                     -- Select One --
                                 </option>

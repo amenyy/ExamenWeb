@@ -5,6 +5,7 @@ const User = require('../models/User');
 //get products;
 router.get('/', async(req, res)=> {
   try {
+    
     const sort = {'_id': -1}
     const products = await Product.find().sort(sort);
     res.status(200).json(products);
@@ -32,8 +33,8 @@ router.post('/', async(req, res)=> {
 router.patch('/:id', async(req, res)=> {
   const {id} = req.params;
   try {
-    const {name, description, price, category, images: pictures} = req.body;
-    const product = await Product.findByIdAndUpdate(id, {name, description, price, category, pictures});
+    const {name, description, price, category, images: pictures,marque,fabricant,fonct,rubrique} = req.body;
+    const product = await Product.findByIdAndUpdate(id, {name, description, price, category, pictures,marque,fabricant,fonct,rubrique});
     const products = await Product.find();
     res.status(200).json(products);
   } catch (e) {
@@ -79,6 +80,21 @@ router.get('/category/:category', async(req,res)=> {
       products = await Product.find().sort(sort);
     } else {
       products = await Product.find({category}).sort(sort)
+    }
+    res.status(200).json(products)
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
+})
+router.get('/rubrique/:rubrique', async(req,res)=> {
+  const {category} = req.params;
+  try {
+    let products;
+    const sort = {'_id': -1}
+    if(category == "all"){
+      products = await Product.find().sort(sort);
+    } else {
+      products = await Product.find({rubrique}).sort(sort)
     }
     res.status(200).json(products)
   } catch (e) {

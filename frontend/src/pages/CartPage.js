@@ -29,7 +29,7 @@ function CartPage() {
             <Row>
                 <Col>
                     <h1 className="pt-2 h3">Shopping cart</h1>
-                    {cart.length == 0 ? (
+                    {cart.length === 0 ? (
                         <Alert variant="info">Shopping cart is empty. Add products to your cart</Alert>
                     ) : (
                         <Elements stripe={stripePromise}>

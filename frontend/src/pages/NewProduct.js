@@ -89,10 +89,9 @@ function NewProduct() {
                                 <option disabled selected>
                                     -- Select One --
                                 </option>
-                                <option value="technology">technology</option>
-                                <option value="tablets">tablets</option>
-                                <option value="phones">phones</option>
-                                <option value="laptops">laptops</option>
+    
+                                <option value="pc de bureau">Pc de bureau</option>
+                                <option value="laptop">Laptop</option>
                             </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3" onChange={(e) => setRubrique(e.target.value)}>

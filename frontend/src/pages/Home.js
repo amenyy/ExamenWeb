@@ -1,5 +1,5 @@
 import axios from "../axios";
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import { Col, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
@@ -8,7 +8,6 @@ import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProducts } from "../features/productSlice";
 import ProductPreview from "../components/ProductPreview";
-
 function Home() {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
