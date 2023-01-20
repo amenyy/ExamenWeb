@@ -41,7 +41,7 @@ const ProductSchema = mongoose.Schema({
   },
   fonct: {
     type: String,
-    required: [true, "can't be blank"]
+    required: [false, "optional"]
   },
 rubrique: {
   type: String,

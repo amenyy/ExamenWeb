@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout, resetNotifications } from "../features/userSlice";
 import "./Navigation.css";
+import logo from "./../Banner/LapTek.png"
+import login from "./../Banner/LapTek_login.png"
 
 function Navigation() {
     const user = useSelector((state) => state.user);
@@ -30,18 +32,28 @@ function Navigation() {
     }
 
     return (
-        <Navbar bg="light" expand="lg">
-            <Container>
+        <Navbar className="navbar">
+            <Container className="cont">
                 <LinkContainer to="/">
-                    <Navbar.Brand>Ecomern</Navbar.Brand>
+                    <Navbar.Brand> <img src={logo} width="180" height={45} />
+                    </Navbar.Brand>
                 </LinkContainer>
+                <div class="input-group">
+                    <div class="form-outline ser">
+                        <input type="search" id="form1" class="form-control"  placeholder="Chercher un produit, une marque, une catégorie..."/>
+
+                    </div>
+                    <button type="button" class="btn serbtn">
+                        <i class="fas fa-search "></i>
+                    </button>
+                    </div>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         {/* if no user */}
                         {!user && (
                             <LinkContainer to="/login">
-                                <Nav.Link>Login</Nav.Link>
+                                <Nav.Link><img src={login} width="150" /></Nav.Link>
                             </LinkContainer>
                         )}
                         {user && !user.isAdmin && (

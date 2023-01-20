@@ -18,7 +18,7 @@ const rubriques = [
     },
     {
         name: "laptop pro",
-        img: "https://www.apple.com/v/macbook-pro-14-and-16/a/images/meta/macbook-pro-14-and-16_overview__fz0lron5xyuu_og.png?202112210140",
+        img: "https://c0.lestechnophiles.com/images.frandroid.com/wp-content/uploads/2020/11/vpavic_4291_20201113_0366-0-768x512.jpg?resize=580,306&key=aefaada8",
     },
     {
         name: "laptop en promotion",

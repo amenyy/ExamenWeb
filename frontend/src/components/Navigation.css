@@ -4,7 +4,7 @@
 }
 
 .logo {
-    width: 50px;
+    width: 10px;
 }
 
 #cartcount {
@@ -67,3 +67,22 @@
     min-width: 2em;
     font: bold 0.4em sans-serif;
 }
+.navbar{
+
+background-color: #ff0000;
+}
+
+.ser{
+    width: 500px;
+    margin-left:2%;
+
+    
+}
+.serbtn{
+    background: #cfcece;
+}
+.cont{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+

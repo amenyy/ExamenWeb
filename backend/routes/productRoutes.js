@@ -70,6 +70,21 @@ router.get('/:id', async(req, res)=> {
     res.status(400).send(e.message);
   }
 });
+router.get('/rubrique/:rubrique', async(req,res)=> {
+  const {rubrique} = req.params;
+  try {
+    let products;
+    const sort = {'_id': -1}
+    if(rubrique== "all"){
+      products = await Product.find().sort(sort);
+    } else {
+      products = await Product.find({rubrique}).sort(sort)
+    }
+    res.status(200).json(products)
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
+})
 
 router.get('/category/:category', async(req,res)=> {
   const {category} = req.params;
@@ -86,21 +101,7 @@ router.get('/category/:category', async(req,res)=> {
     res.status(400).send(e.message);
   }
 })
-router.get('/rubrique/:rubrique', async(req,res)=> {
-  const {category} = req.params;
-  try {
-    let products;
-    const sort = {'_id': -1}
-    if(category == "all"){
-      products = await Product.find().sort(sort);
-    } else {
-      products = await Product.find({rubrique}).sort(sort)
-    }
-    res.status(200).json(products)
-  } catch (e) {
-    res.status(400).send(e.message);
-  }
-})
+
 
 // cart routes
 

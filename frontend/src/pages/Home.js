@@ -1,13 +1,25 @@
 import axios from "../axios";
 import React, { useEffect} from "react";
-import { Col, Row } from "react-bootstrap";
+import {Container, Col, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import categories from "../categories";
+import rubriques from "../rubriques";
+
 import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProducts } from "../features/productSlice";
 import ProductPreview from "../components/ProductPreview";
+import Banner from "../components/Banner";
+import Marque from "../components/marque";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import Footer2 from "../components/footer2";
+
+
+
+
+
 function Home() {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
@@ -16,10 +28,16 @@ function Home() {
         axios.get("/products").then(({ data }) => dispatch(updateProducts(data)));
     }, []);
     return (
-        <div>
-            <img src=" https://res.cloudinary.com/learn-code-10/image/upload/v1653947013/yqajnhqf7usk56zkwqi5.png" className="home-banner" />
-            <div className="featured-products-container container mt-4">
-                <h2>Last products</h2>
+        
+        <div className="bg2">
+            <Header/>
+            <Container>
+            <Banner/>
+            </Container>
+
+
+            <div className="featured-products-container container mt-4 conatin">
+                <h2 className="font">Last products</h2>
                 {/* last products here */}
                 <div className="d-flex justify-content-center flex-wrap">
                     {lastProducts.map((product) => (
@@ -32,13 +50,13 @@ function Home() {
                     </Link>
                 </div>
             </div>
-            {/* sale banner */}
-            <div className="sale__banner--container mt-4">
-                <img src="https://res.cloudinary.com/learn-code-10/image/upload/v1654093280/xkia6f13xxlk5xvvb5ed.png" />
-            </div>
+        
+           
             <div className="recent-products-container container mt-4">
-                <h2>Categories</h2>
+                <h2 className="font">Categories</h2>
+                <div className="modif">
                 <Row>
+                    
                     {categories.map((category) => (
                         <LinkContainer to={`/category/${category.name.toLocaleLowerCase()}`}>
                             <Col md={4}>
@@ -48,10 +66,42 @@ function Home() {
                             </Col>
                         </LinkContainer>
                     ))}
+                 
                 </Row>
+                </div>  
+                <br/>
+                <h2 className="font">Sous Catégories</h2>
+                <br/>
+                <Row>
+                    {rubriques.map((rubrique) => (
+                        <LinkContainer to={`/rubrique/${rubrique.name.toLocaleLowerCase()}`}>
+                            <Col md={4}>
+                                <div style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${rubrique.img})`, gap: "10px" }} className="category-tile">
+                                    {rubrique.name}
+                                </div>
+                            </Col>
+                        </LinkContainer>
+                    ))}
+                </Row>
+
+                
             </div>
+            <div className="featured-products-container container mt-4 conatin2">
+                <br/>
+                <h2 className="font">Marques</h2>
+                    <br/><Marque/>
+            </div>
+            <br/>
+            <br/>
+            <br/>  
+            <Footer/>    
+            <Footer2/>          
         </div>
+        
+        
+
     );
 }
 
 export default Home;
+

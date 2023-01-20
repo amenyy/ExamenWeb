@@ -136,15 +136,15 @@ function EditProductPage() {
                                 <option disabled selected>
                                     -- Select One --
                                 </option>
-                                <option value="Mac">Mac</option>
-                                <option value="Acer">Acer</option>
-                                <option value="Asus">Asus</option>
-                                <option value="Dell">Dell</option>
-                                <option value="HP">HP</option>
-                                <option value="Huawei">Huawei</option>
-                                <option value="Lenovo">Lenovo</option>
-                                <option value="MSI">MSI</option>
-                                <option value="Razen">Razen</option>
+                                <option value="mac">Mac</option>
+                                <option value="acer">Acer</option>
+                                <option value="asus">Asus</option>
+                                <option value="dell">Dell</option>
+                                <option value="hp">HP</option>
+                                <option value="huawei">Huawei</option>
+                                <option value="lenovo">Lenovo</option>
+                                <option value="msi">MSI</option>
+                                <option value="razen">Razen</option>
 
 
 

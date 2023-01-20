@@ -51,16 +51,16 @@ function ProductPage() {
         <Container className="pt-4" style={{ position: "relative" }}>
             <Row>
                 <Col lg={6}>
-                    <AliceCarousel mouseTracking items={images} controlsStrategy="alternate" />
+                    <AliceCarousel autoPlay interval={111}  mouseTracking items={images} controlsStrategy="alternate" />
                 </Col>
                 <Col lg={6} className="pt-4">
                     <h1>{product.name}</h1>
                     <p>
                         <Badge bg="primary">{product.category}</Badge>
-                         <Badge bg="primary">{product.marque}</Badge>
-                          <Badge bg="primary">{product.fabricant}</Badge>
+                        <Badge bg="primary">{product.marque}</Badge>
+                        <Badge bg="primary">{product.fabricant}</Badge>
                     </p>
-                    <p className="product__price">DT{product.price}</p>
+                    <p className="product__price"><b>{product.price}<span> </span> TND</b></p>
                     <p style={{ textAlign: "justify" }} className="py-3">
                         <strong>Description:</strong> {product.description}
                     </p>

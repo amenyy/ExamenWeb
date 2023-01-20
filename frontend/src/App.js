@@ -2,6 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
+import HeaderTop from "./components/headerTop";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -9,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import NewProduct from "./pages/NewProduct";
 import ProductPage from "./pages/ProductPage";
 import CategoryPage from "./pages/CategoryPage";
+import RubriquePage from "./pages/RubriquePage";
+
 import ScrollToTop from "./components/ScrollToTop";
 import CartPage from "./pages/CartPage";
 import OrdersPage from "./pages/OrdersPage";
@@ -39,6 +42,7 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
+                <HeaderTop/>
                 <ScrollToTop />
                 <Navigation />
                 <Routes>
@@ -64,6 +68,7 @@ function App() {
                     )}
                     <Route path="/product/:id" element={<ProductPage />} />
                     <Route path="/category/:category" element={<CategoryPage />} />
+                    <Route path="/rubrique/:rubrique" element={<RubriquePage />} />
 
                     <Route path="/new-product" element={<NewProduct />} />
 
